@@ -72,7 +72,7 @@ function handleGuess(letter) {
 
 function updateMeltingSnowmanGraphic() {
 	const meltingSnowmanContainer = document.querySelector('.MeltingSnowman');
-	meltingSnowmanContainer.innerHTML = `<img src="images/MeltingSnowman${imageCount}.png" alt="MeltingSnowman ${imageCount}">`;
+	meltingSnowmanContainer.innerHTML = `<img src="images/melting-snowman-${imageCount}.png" alt="MeltingSnowman ${imageCount}">`;
 	imageCount++;
 }
 
