@@ -1,27 +1,20 @@
-const words = [
-	'JAVASCRIPT',
-	'HTML',
-	'CSS',
-	'NODE',
-	'REACT',
-	'ANGULAR',
-	'JQUERY',
-	'VUE'
-];
-
+const easyWords = ["apple", "house", "table", "chair", "grape", "beach", "cloud", "green", "smile", "ocean"];
+const mediumWords = ["pencil", "guitar", "winter", "bridge", "castle", "planet", "window", "garden", "painter", "shadow"];
+const hardWords = ["symphony", "avalanche", "blueprint", "galaxy", "lighthouse", "crescendo", "whispering", "mystical", "alchemy", "quicksand"];
+const words = [...easyWords, ...mediumWords, ...hardWords];
 const template = `
   <div id="hangman-game">
     <svg width="200" height="250">
-      <line x1="10" y1="230" x2="100" y2="230" stroke="black" stroke-width="4" />
-      <line x1="55" y1="230" x2="55" y2="50" stroke="black" stroke-width="4" />
-      <line x1="55" y1="50" x2="120" y2="50" stroke="black" stroke-width="4" />
-      <line x1="120" y1="50" x2="120" y2="80" stroke="black" stroke-width="4" />
-      <circle id="head" cx="120" cy="100" r="20" stroke="black" stroke-width="4" fill="none" />
-      <line id="body" x1="120" y1="120" x2="120" y2="170" stroke="black" stroke-width="4" />
-      <line id="leftArm" x1="120" y1="130" x2="100" y2="150" stroke="black" stroke-width="4" />
-      <line id="rightArm" x1="120" y1="130" x2="140" y2="150" stroke="black" stroke-width="4" />
-      <line id="leftLeg" x1="120" y1="170" x2="100" y2="200" stroke="black" stroke-width="4" />
-      <line id="rightLeg" x1="120" y1="170" x2="140" y2="200" stroke="black" stroke-width="4" />
+      <line x1="10" y1="230" x2="100" y2="230" stroke="#2e4362" stroke-width="4" />
+      <line x1="55" y1="230" x2="55" y2="50" stroke="#2e4362" stroke-width="4" />
+      <line x1="55" y1="50" x2="120" y2="50" stroke="#2e4362" stroke-width="4" />
+      <line x1="120" y1="50" x2="120" y2="80" stroke="#2e4362" stroke-width="4" />
+      <circle id="head" cx="120" cy="100" r="20" stroke="#2e4362" stroke-width="4" fill="none" />
+      <line id="body" x1="120" y1="120" x2="120" y2="170" stroke="#2e4362" stroke-width="4" />
+      <line id="leftArm" x1="120" y1="130" x2="100" y2="150" stroke="#2e4362" stroke-width="4" />
+      <line id="rightArm" x1="120" y1="130" x2="140" y2="150" stroke="#2e4362" stroke-width="4" />
+      <line id="leftLeg" x1="120" y1="170" x2="100" y2="200" stroke="#2e4362" stroke-width="4" />
+      <line id="rightLeg" x1="120" y1="170" x2="140" y2="200" stroke="#2e4362" stroke-width="4" />
     </svg>
   </div>
 `;
@@ -77,17 +70,17 @@ function updateWordDisplay() {
 }
 
 function handleGuess(letter) {
-	if (guessedLetters.includes(letter)) {
+	if (guessedLetters.includes(letter.toLowerCase())) {
 		return;
 	}
 
 	guessedLetters.forEach((guessedLetter, index) => {
-		if (wordToGuess[index] === letter) {
-			guessedLetters[index] = letter;
+		if (wordToGuess[index] === letter.toLowerCase()) {
+			guessedLetters[index] = letter.toLowerCase();
 		}
 	});
 
-	if (!wordToGuess.includes(letter)) {
+	if (!wordToGuess.includes(letter.toLowerCase())) {
 		wrongGuesses++;
 		removeHangmanPart();
 	}
@@ -110,10 +103,8 @@ function removeHangmanPart() {
 	}
 }
 
-
-
 function checkWinOrLose() {
-	if (guessedLetters.join('') === wordToGuess) {
+	if (guessedLetters.join('').toLowerCase() === wordToGuess.toLowerCase()) {
 		const messageContainer = document.querySelector('.message');
 		messageContainer.innerText = 'You win!';
 		const letterButtons = document.querySelectorAll('.letters button');
@@ -121,6 +112,7 @@ function checkWinOrLose() {
 			button.disabled = true;
 			button.removeEventListener('click', handleGuess);
 		});
+		btnStart.style.display = 'inline-block';
 	} else if (wrongGuesses >= maxWrongGuesses) {
 		const messageContainer = document.querySelector('.message');
 		messageContainer.innerText = `You lose! The word was "${wordToGuess}".`;
@@ -130,7 +122,6 @@ function checkWinOrLose() {
 			button.removeEventListener('click', handleGuess);
 		});
 		btnStart.style.display = 'inline-block';
-
 	}
 }
 window.addEventListener('load', initializeGame);
