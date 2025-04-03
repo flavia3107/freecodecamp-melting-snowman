@@ -4,7 +4,6 @@ body {
 
 .container {
 	display: flex;
-	flex-direction: column;
 	justify-content: center;
 	align-items: center;
 	height: 100vh;
@@ -18,11 +17,14 @@ body {
 .MeltingSnowman {
 	width: 400px;
 	height: 400px;
-	border: 2px solid blue;
 	margin: 20px;
 	display: flex;
 	justify-content: center;
 	align-items: center;
+}
+
+img {
+	border-radius: 20px;
 }
 
 .word {
@@ -33,10 +35,11 @@ body {
 }
 
 .letters {
-	margin: 20px;
-	display: flex;
-	justify-content: center;
-	flex-wrap: wrap;
+	display: grid;
+	grid-template-columns: repeat(7, 1fr);
+	gap: 10px;
+	max-width: 400px;
+	margin: auto 5rem;
 }
 
 .letters button {
@@ -44,9 +47,10 @@ body {
 	padding: 10px;
 	font-size: 1.2rem;
 	border: none;
-	background-color: blue;
+	background-color: #2e4362;
 	color: #fff;
 	cursor: pointer;
+	border-radius: 5px;
 }
 
 .message {
@@ -55,4 +59,8 @@ body {
 	display: flex;
 	justify-content: center;
 	align-items: center;
+}
+
+button:disabled {
+	background-color: #7f91ac;
 }

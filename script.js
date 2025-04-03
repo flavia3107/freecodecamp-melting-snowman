@@ -38,6 +38,7 @@ function initializeGame() {
 		const button = document.createElement('button');
 		button.innerText = letter;
 		button.addEventListener('click', function () {
+			this.disabled = true;
 			handleGuess(letter);
 		});
 		lettersContainer.appendChild(button);
