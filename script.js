@@ -21,7 +21,7 @@ const template = `
 
 const maxWrongGuesses = 6;
 const hangmanParts = [
-	"leftLeg", "rightLeg", "rightArm", "leftArm", "body", "head"
+	"head", "body", "leftLeg", "rightLeg", "rightArm", "leftArm"
 ];
 const btnStart = document.querySelector('#newGameButton');
 btnStart.addEventListener('click', initializeGame)
@@ -82,7 +82,7 @@ function handleGuess(letter) {
 
 	if (!wordToGuess.includes(letter.toLowerCase())) {
 		wrongGuesses++;
-		removeHangmanPart();
+		showHangmanPart();
 	}
 	updateWordDisplay();
 	checkWinOrLose();
@@ -93,15 +93,16 @@ function updateMeltingSnowmanGraphic() {
 	meltingSnowmanContainer.innerHTML = template;
 }
 
-function removeHangmanPart() {
+function showHangmanPart() {
 	if (wrongGuesses <= maxWrongGuesses) {
 		const partId = hangmanParts[wrongGuesses - 1];
 		const partElement = document.getElementById(partId);
 		if (partElement) {
-			partElement.remove();
+			partElement.style.visibility = "visible";
 		}
 	}
 }
+
 
 function checkWinOrLose() {
 	if (guessedLetters.join('').toLowerCase() === wordToGuess.toLowerCase()) {

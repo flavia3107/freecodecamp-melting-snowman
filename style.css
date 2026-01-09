@@ -79,3 +79,7 @@ button:disabled {
 	font-weight: 900;
 	cursor: pointer;
 }
+
+svg *[id] {
+	visibility: hidden;
+}
