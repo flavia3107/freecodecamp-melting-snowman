@@ -1,13 +1,15 @@
 body {
 	background-color: #f5f5f5;
 	font-family: "DejaVu Sans", sans-serif;
+	height: 100%;
 }
 
 .container {
 	display: flex;
+	flex-direction: column;
 	justify-content: center;
 	align-items: center;
-	height: calc(100vh - 10rem);
+	margin: auto;
 }
 
 .container img {
@@ -62,6 +64,11 @@ img {
 
 button:disabled {
 	background-color: #7f91ac;
+}
+
+.flex-column {
+	display: flex;
+	flex-direction: column;
 }
 
 .buttons {

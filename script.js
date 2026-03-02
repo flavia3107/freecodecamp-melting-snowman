@@ -4,7 +4,7 @@ const hardWords = ["symphony", "avalanche", "blueprint", "galaxy", "lighthouse",
 const words = [...easyWords, ...mediumWords, ...hardWords];
 const template = `
   <div id="hangman-game">
-    <svg width="200" height="250">
+    <svg width="150" height="250">
       <line x1="10" y1="230" x2="100" y2="230" stroke="#2e4362" stroke-width="4" />
       <line x1="55" y1="230" x2="55" y2="50" stroke="#2e4362" stroke-width="4" />
       <line x1="55" y1="50" x2="120" y2="50" stroke="#2e4362" stroke-width="4" />
